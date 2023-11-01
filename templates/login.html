@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block title %}Login{% endblock %}
+
+
+
+
+
+{% block main %}
+<button  onclick="location.href='/'" class="btn btn-primary">Back</button>
+<body id=mainBody style="margin: 35px;">
+  <div style="padding: 20px; border-radius: 5%; background-color: rgb(245, 203, 167); width:40%; margin-left:30%; margin-top: 10%">
+    <h3 class="modal-title w-100 text-center">Login</h3>
+    <form action="/login" method="post">
+        <div >
+            <div style="margin-bottom: 50px">
+                <label for="inputEmail4">Email</label>
+                <input autocomplete="off" type="email" class="form-control" name="email" id="email" placeholder="Email">
+            </div>
+            <div style="margin-bottom: 50px">
+                <label for="inputPassword4">Password</label>
+                <input autocomplete="off" type="password" class="form-control" name="password" id="password"
+                    placeholder="Password">
+            </div>
+            <button type="submit" class="btn btn-success">Login</button>
+            <div class="mb-3">
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                {% for message in messages %}
+                {{ message }}
+                {% endfor %}
+                {% endif %}
+                {% endwith %}
+            </div>
+        </div>
+
+    </form>
+  </div>
+</body>
+{% endblock %}
