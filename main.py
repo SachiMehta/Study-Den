@@ -19,7 +19,8 @@ from werkzeug.security import check_password_hash, generate_password_hash
 import re
 from helper import login_required
 from datetime import date as DT
-from bardapi import Bard
+# from bardapi import Bard
+import google.generativeai as genai
 import os
 
 app = Flask(__name__)
@@ -153,14 +154,16 @@ def den():
 
     # currently my Bard is not conversational TODO
     try:
-      os.environ['_BARD_API_KEY'] = apiKey[0]['text']
+      gemini_api_key = apiKey[0]['text']
+      genai.configure(api_key=gemini_api_key)
     except:
-      flash("Oh no! Your bard API token is missing :( ")
-
+      flash("Oh no! Your Gemini API token is missing :( ")
+    
+    model = genai.GenerativeModel('gemini-1.5-flash-latest')
     try:
-      answer = Bard().get_answer(input)['content']
+      answer = model.generate_content(input).text
     except:
-      flash("Oh no! Your bard API token may be inactive :( ")
+      flash("Oh no! Your Gemini API token may be inactive :( ")
 
     if not input.isspace() and answer != "":
       db.execute(
@@ -414,7 +417,10 @@ def den():
 
       for row in journal_mood_rows:
         moodX_array.append(row['date'])
-        journalDict[row['date']] = row['mood']
+        if row['mood'] != 0:
+          journalDict[row['date']] = row['mood']
+        else:
+          journalDict[row['date']] = "null"
       for row in tracker_mood_rows:
         moodX_array.append(row['date'])
         trackerDict[row['date']] = row['mood']
@@ -552,4 +558,4 @@ def todo():
 
 
 if __name__ == "__main__":
-  app.run(host='0.0.0.0', port=8001)
+  app.run(host='0.0.0.0', port=8000)
