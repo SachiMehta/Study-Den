@@ -32,8 +32,8 @@ Study Den was created to address the growing need for mental health awareness al
 
 ## 🛠️ Tech Stack
 
-- **Frontend:** HTML, CSS, JavaScript  
-- **Backend:** Python (Flask)  
+- **Frontend:** HTML, CSS,   
+- **Backend:** Python (Flask), JavaScript
 - **APIs:** Google Gemini API  
 - **Data Analysis:** Natural Language Toolkit (NLTK)  
 - **Visualization:** JavaScript charting libraries  
