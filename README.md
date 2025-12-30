@@ -28,7 +28,7 @@
 
 ## 🧠 Motivation
 
-Study Den was created to address the growing need for mental health awareness alongside academic and personal productivity. Rather than separating wellness and productivity, the platform integrates both—recognizing that emotional well-being directly impacts focus, motivation, and long-term success.
+Study Den was created to address the growing need for mental health awareness alongside academic and personal productivity. Rather than separating wellness and productivity, the platform integrates both—recognizing that emotional well-being directly impacts focus, motivation, and long-term success. It is a more advanced Version of **Wellness Park**
 
 ## 🛠️ Tech Stack
 
